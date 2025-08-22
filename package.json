@@ -1,0 +1,29 @@
+{
+    "name": "mern-auth",
+    "version": "1.0.0",
+    "description": "",
+    "type": "module",
+    "main": "backend/server.js",
+    "scripts": {
+        "dev": "nodemon backend/server.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gaurav-08-patel/mern-auth.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/gaurav-08-patel/mern-auth/issues"
+    },
+    "homepage": "https://github.com/gaurav-08-patel/mern-auth#readme",
+    "dependencies": {
+        "dotenv": "^17.2.1",
+        "express": "^5.1.0"
+    },
+    "devDependencies": {
+        "nodemon": "^3.1.10"
+    }
+}
