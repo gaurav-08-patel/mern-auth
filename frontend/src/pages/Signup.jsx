@@ -1,19 +1,24 @@
 import { useState } from "react";
 import Layout from "../components/Layout";
 import { Link } from "react-router-dom";
-import useSignup from "../../hooks/useSignup.js";
+import useSignup from "../hooks/useSignup.js";
 
 const Signup = () => {
     let { loading, signup } = useSignup();
-    let [formData, setFormData] = useState({});
-
-    let handleChange = (e) => {
-        setFormData({ ...formData, [e.target.id]: e.target.value });
-    };
+    let [formData, setFormData] = useState({
+        username: "",
+        email: "",
+        password: "",
+    });
 
     let handleSubmit = async (e) => {
         e.preventDefault();
         await signup(formData);
+        setFormData({
+            username: "",
+            email: "",
+            password: "",
+        });
     };
 
     return (
@@ -31,26 +36,47 @@ const Signup = () => {
                         placeholder="Username"
                         className="bg-slate-200 p-2.5 rounded-lg"
                         id="username"
-                        onChange={handleChange}
+                        value={formData.username}
+                        onChange={(e) =>
+                            setFormData({
+                                ...formData,
+                                [e.target.id]: e.target.value,
+                            })
+                        }
                     />
                     <input
                         type="email"
                         placeholder="Email"
                         className="bg-slate-200 p-2.5 rounded-lg"
                         id="email"
-                        onChange={handleChange}
+                        value={formData.email}
+                        onChange={(e) =>
+                            setFormData({
+                                ...formData,
+                                [e.target.id]: e.target.value,
+                            })
+                        }
                     />
                     <input
                         type="password"
                         placeholder="Password"
                         className="bg-slate-200 p-2.5 rounded-lg"
                         id="password"
-                        onChange={handleChange}
+                        value={formData.password}
+                        onChange={(e) =>
+                            setFormData({
+                                ...formData,
+                                [e.target.id]: e.target.value,
+                            })
+                        }
                     />
 
-                    <button className="disabled:opacity-85 hover:opacity-85 transition-all bg-slate-600 text-white p-2.5 rounded-lg cursor-pointer" disabled={loading} >
+                    <button
+                        className="disabled:opacity-85 hover:opacity-85 transition-all bg-slate-600 text-white p-2.5 rounded-lg cursor-pointer"
+                        disabled={loading}
+                    >
                         {loading ? (
-                            <span class="loading loading-dots loading-lg"></span>
+                            <span className="loading loading-dots loading-lg"></span>
                         ) : (
                             "SIGN UP"
                         )}

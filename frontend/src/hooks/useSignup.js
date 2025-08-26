@@ -30,7 +30,7 @@ const useSignup = () => {
             }
 
             if (data.success) {
-                toast.error(data.success);
+                toast.success(data.success);
                 navigate('/signin')
             }
 
