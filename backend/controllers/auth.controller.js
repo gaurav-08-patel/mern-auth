@@ -2,11 +2,13 @@ import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
 
 export const signup = async (req, res) => {
+    
     let { username, email, password } = req.body;
 
     if (!username && !email && !password) {
         return res.status(400).json({ error: "Enter all credentials." });
     }
+
     let duplicate = await User.findOne({ username });
     let duplicateEmail = await User.findOne({ email });
 
@@ -25,7 +27,7 @@ export const signup = async (req, res) => {
         let newUser = new User({ username, email, password : hashpwd });
         
         await newUser.save();
-        res.status(201).json({ message: "User Created successfully. " });
+        res.status(201).json({ success: "User Created successfully." });
     } catch (error) {
         console.log("error :", error.message);
     }

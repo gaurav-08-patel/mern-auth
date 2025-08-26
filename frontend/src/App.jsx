@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer, Zoom } from "react-toastify";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Signin from "./pages/Signin";
@@ -15,6 +16,19 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/profile" element={<Profile />} />
             </Routes>
+            <ToastContainer
+                position="top-center"
+                autoClose={2999}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Zoom}
+            />
         </BrowserRouter>
     );
 }
