@@ -2,6 +2,7 @@ import { useState } from "react";
 import Layout from "../components/Layout";
 import useSignin from "../hooks/useSignin.js";
 import { Link } from "react-router-dom";
+import OAuth from "../components/OAuth.jsx";
 
 const Signin = () => {
     let { loading, signin } = useSignin();
@@ -65,6 +66,7 @@ const Signin = () => {
                             "SIGN IN"
                         )}
                     </button>
+                    <OAuth/>
                     <span className="text-sm font-medium">
                         Don&apos;t have an account ?{" "}
                         <Link to="/signup" className="text-blue-500">

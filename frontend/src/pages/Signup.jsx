@@ -2,6 +2,7 @@ import { useState } from "react";
 import Layout from "../components/Layout";
 import { Link } from "react-router-dom";
 import useSignup from "../hooks/useSignup.js";
+import OAuth from "../components/OAuth.jsx";
 
 const Signup = () => {
     let { loading, signup } = useSignup();
@@ -81,6 +82,7 @@ const Signup = () => {
                             "SIGN UP"
                         )}
                     </button>
+                    <OAuth/>
                     <span className="text-sm font-medium">
                         Have an account ?{" "}
                         <Link to="/signin" className="text-blue-500">

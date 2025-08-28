@@ -6,7 +6,7 @@ const useSignin = () => {
     let { authUser, setAuthUser } = useAuthContext();
     let [loading, setLoading] = useState(false);
 
-    console.log("authUser from login ", authUser);
+    
     
     const signin = async ({ email, password }) => {
         setLoading(true);
