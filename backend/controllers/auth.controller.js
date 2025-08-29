@@ -56,3 +56,34 @@ export const signin = async (req, res) => {
     generateTokenAndSaveCookie(user._id, res);
     res.status(200).json(safeUser);
 };
+
+export const google = async (req, res) => {
+    let { name, email, profilePicture } = req.body;
+
+    let user = await User.findOne({ email });
+
+    if (user) {
+        generateTokenAndSaveCookie(user._id, res);
+        let { password, ...safeUser } = user.toObject();
+        res.status(200).json(safeUser);
+    } else {
+        let generatedPassword =
+            Math.random().toString(36).slice(-8) +
+            Math.random().toString(36).slice(-8);
+        let hashpwd = await bcrypt.hash(generatedPassword, 10);
+        let username =
+            name.split(" ").join("").toLowerCase() +
+            Math.floor(Math.random() * 10000);
+
+        let newUser = new User({
+            username,
+            email,
+            password: hashpwd,
+            profilePicture,
+        });
+        newUser.save();
+
+        let { password, ...safeUser } = newUser.toObject();
+        res.status(200).json(safeUser);
+    }
+};
