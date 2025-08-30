@@ -83,6 +83,7 @@ export const google = async (req, res) => {
         });
         newUser.save();
 
+        generateTokenAndSaveCookie(newUser._id, res);
         let { password, ...safeUser } = newUser.toObject();
         res.status(200).json(safeUser);
     }

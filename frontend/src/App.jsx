@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { ToastContainer , Zoom} from "react-toastify";
+import { ToastContainer, Zoom } from "react-toastify";
 import { Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
@@ -14,10 +14,7 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route
-                    path="/"
-                    element={authUser ? <Home /> : <Navigate to={"/signin"} />}
-                />
+                <Route path="/" element={<Home />} />
                 <Route
                     path="/signup"
                     element={authUser ? <Navigate to={"/"} /> : <Signup />}
@@ -30,11 +27,7 @@ function App() {
                 <Route
                     path="/profile"
                     element={
-                        authUser ? (
-                            <Profile to={"/"} />
-                        ) : (
-                            <Navigate to={"/signin"} />
-                        )
+                        authUser ? <Profile /> : <Navigate to={"/signin"} />
                     }
                 />
             </Routes>
